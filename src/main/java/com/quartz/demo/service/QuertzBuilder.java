@@ -19,7 +19,7 @@ public class QuertzBuilder {
 					withIdentity( "user","employees")
 					.build();
 			Trigger userTrigger=TriggerBuilder.newTrigger().withIdentity("cronTrigger1", "group1")
-								.withSchedule(CronScheduleBuilder.cronSchedule("0 0/2 * * * ?")).build();
+								.withSchedule(CronScheduleBuilder.cronSchedule("0 0/1 * * * ?")).build();
 
 			Scheduler userScheduler=new StdSchedulerFactory().getScheduler();
 			userScheduler.start();
@@ -34,7 +34,7 @@ public class QuertzBuilder {
 //			// 继续执行任务
 //			userScheduler.addJob(userJobDetails, true);
 
-
+			logger.info("start success");
 		} catch (SchedulerException e) {
 			logger.error(e.toString());
 		}
